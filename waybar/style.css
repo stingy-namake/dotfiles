@@ -1,0 +1,336 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Integrated with pywal colors */
+
+* {
+    font-family: "monospace", "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    min-height: 0;
+    font-size: 97%;
+    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+    padding: 0.03125rem;
+}
+
+/* Import pywal colors */
+@import "../../.cache/wal/colors-waybar.css";
+
+window#waybar {
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    background: transparent;
+    border-radius: 12px;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#waybar.empty #window {
+    background: none;
+}
+
+/* Module containers */
+.modules-left, .modules-center, .modules-right {
+    background: @background; 
+    border: 0px solid @color4;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 4px;
+    padding-left: 4px;
+    border-radius: 10;
+} 
+
+.modules-left, .modules-right {
+    border: 0px solid @color9;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 4px;
+    padding-left: 4px;
+} 
+
+/* General module padding */
+#backlight,
+#backlight-slider,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#disk,
+#idle_inhibitor,
+#keyboard-state,
+#memory,
+#mode,
+#mpris,
+#network,
+#pulseaudio,
+#pulseaudio-slider,
+#taskbar button,
+#taskbar,
+#temperature,
+#tray,
+#window,
+#wireplumber,
+#workspaces,
+#custom-backlight,
+#custom-cycle_wall,
+#custom-keybinds,
+#custom-keyboard,
+#custom-light_dark,
+#custom-lock,
+#custom-menu,
+#custom-power_vertical,
+#custom-power,
+#custom-swaync,
+#custom-updater,
+#custom-weather,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.default, 
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.severe,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.sunnyDay,
+#custom-night_mode {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+/* Module-specific colors */
+#idle_inhibitor {
+    color: @color9;
+}
+
+#bluetooth,
+#backlight {
+    color: @color9;
+}
+
+#battery {
+    color: @color11;
+}
+
+@keyframes blink {
+    to {
+        color: @color8;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #FF3131;
+    color: @foreground;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    box-shadow: inset 0 -3px transparent;
+}
+
+#clock {
+    color: @color9;
+}
+
+#cpu {
+    color: @color11;
+}
+
+#custom-keyboard,
+#memory {
+    color: @color14;
+}
+
+#disk {
+    color: @color13;
+}
+
+#temperature {
+    color: @color3;
+}
+
+#temperature.critical {
+    background-color: @color1;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#keyboard-state {
+    color: @color5;
+}
+
+/* Workspaces */
+#workspaces button {
+    box-shadow: none;
+    text-shadow: none;
+    border-radius: 9px;
+    padding-left: 4px;
+    padding-right: 4px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button:hover {
+    border-radius: 10px;
+    color: @color8;
+    background-color: @color0;
+    padding-left: 4px;
+    padding-right: 4px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button.persistent {
+    color: @color8;
+    border-radius: 10px;
+}
+
+#workspaces button.active {
+    color: @color3;
+    border-radius: 10px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button.urgent {
+    color: @color1;
+    border-radius: 0px;
+}
+
+/* Taskbar */
+#taskbar button.active {
+    padding-left: 8px;
+    padding-right: 8px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#taskbar button:hover {
+    padding-left: 2px;
+    padding-right: 2px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+/* Custom modules */
+#custom-cava_mviz {
+    color: @color5;
+}
+
+#custom-menu {
+    color: @color3;
+}
+
+#custom-power {
+    color: @color1;
+}
+
+#custom-updater {
+    color: @color1;
+}
+
+#custom-light_dark {
+    color: @color9;
+}
+
+#custom-weather {
+    color: @color6;
+}
+
+#custom-lock {
+    color: @color5;
+}
+
+/* Audio */
+#pulseaudio {
+    color: @color11;
+}
+
+#pulseaudio.bluetooth {
+    color: @color5;
+}
+#pulseaudio.muted {
+    color: @color1;
+}
+
+#window {
+    color: @color12;
+}
+
+#custom-waybar-mpris {
+    color: @color6;
+}
+
+/* Network */
+#network {
+    color: @color9;
+}
+#network.disconnected,
+#network.disabled {
+    background-color: @color0;
+    color: @foreground;
+}
+
+/* Sliders */
+#pulseaudio-slider slider,
+#backlight-slider slider {
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    color: @color8;
+}
+
+#pulseaudio-slider trough,
+#backlight-slider trough {
+    min-width: 80px;
+    min-height: 5px;
+    border-radius: 5px;
+    background-color: @color8;
+}
+
+#pulseaudio-slider highlight,
+#backlight-slider highlight {
+    min-height: 10px;
+    border-radius: 5px;
+    background-color: @color9;
+}
+
+#custom-power, #custom-reboot, #custom-quit  {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+#custom-power {
+  font-size:160%;
+  color: #FF3131;
+}
+
+ #custom-reboot, #custom-quit {
+  font-size: 110%;
+  color: @color9;
+ }
+
+ #custom-night_mode {
+    font-size: 120%;
+    color: @color9;
+ }
+
+ #custom-line {
+    color: @color8;
+ }
+
+ #custom-tty, #custom-wal, #custom-logo {
+    color: @color5;
+ }
+
+ 
